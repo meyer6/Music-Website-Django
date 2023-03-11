@@ -1,0 +1,94 @@
+{% extends "base2.html" %}
+{% block header %} 
+<script src="https://kit.fontawesome.com/d75c57d256.js" crossorigin="anonymous"></script>
+<style>      
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    
+    html *
+      {
+      font-family: "Poppins", sans-serif;
+    }
+    h1,h2,h3,h4,h5,h6,body {font-family: "Poppins", sans-serif}
+
+</style>
+
+{% endblock header %} 
+{% block content %} 
+<br></br>
+<div>
+    <table style="float: left">
+        <form action="/main/create" method="post">
+            {% csrf_token %}
+            <tr>
+                <th width="50"></th>
+                <th width="460">
+                    <h3>
+                        <label for="playlist_name">Playlist Name:</label>
+                        <input type="text" name="playlist_name" required>
+                    </h3>
+                <th width="75">
+                    <button type="submit" align = "right">Create Playlist</button>
+                </th>
+            </tr>
+        </form>
+        <form action="/main/remove_song" method="post">
+            {% csrf_token %}
+            {% for song in playlist_songs %}
+                <tr>
+                    <th width="50"></th>
+                    <th width="460">
+                        <p align = "left"><b>{{ song.0 }}</b>: By {{ song.1 }}</p>  
+                        <hr/>
+                    </th>
+                    <th width="75">
+                        <input type="hidden" name = "{{ forloop.counter0 }}song1" value = '{{song.0}}'>
+                        <input type="hidden" name = "{{ forloop.counter0 }}song2" value = '{{song.1}}'>
+                        <input type="hidden" name = "{{ forloop.counter0 }}song3" value = '{{song.2}}'>
+                        <input type="hidden" name = "{{ forloop.counter0 }}song4" value = '{{song.3}}'>
+                        <button type="submit" name ="B{{ forloop.counter0 }}B" align = "right" style = "background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;">
+                            <i class="fa-solid fa-minus fa-2x"></i>
+                        </button>                    
+                    </th>
+                </tr>
+            {% endfor %}
+        </form>    
+    </table>
+    <table style="float: right">
+        <form action="/main/search" method="post">
+            {% csrf_token %}
+            <tr>
+                <th colspan="2">
+                    <h3>
+                        <input type="text" id="search" name="search" placeholder="Search.." >
+                        <button type="submit" style = "background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </h3>
+                </th>
+            </tr>
+        </form>
+        <form action="/main/add_song" method="post" >
+            {% csrf_token %}
+            {% for song in all_songs %}
+
+                <tr>
+                    <th width="460" align = "left">
+                        <p>{{ song.0 }}: <small><i>By {{ song.1 }}</i></small></p>
+                        <hr/>
+                    </th>
+                    <th width="75" >
+                        <input type="hidden" name = "{{ forloop.counter0 }}song1"  value = '{{song.0}}'>
+                        <input type="hidden" name = "{{ forloop.counter0 }}song2"  value = '{{song.1}}'>
+                        <input type="hidden" name = "{{ forloop.counter0 }}song3" value = '{{song.2}}'>
+                        <input type="hidden" name = "{{ forloop.counter0 }}song4" value = '{{song.3}}'>
+                        <button type="submit" name ="B{{ forloop.counter0 }}B" align = "right" style = "background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;">
+                            <i class="fa-solid fa-plus fa-2x"></i>
+                        </button>
+                    </th>
+                    <th width="50"></th>
+                </tr>
+            {% endfor %}
+        </form>
+    </table>
+</div>
+{% endblock content %}

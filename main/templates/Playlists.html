@@ -1,0 +1,46 @@
+{% extends "base2.html" %}
+{% block header %} 
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{%  static 'Playlists.css' %}"> 
+    <style>      
+      @import url('https://fonts.googleapis.com/css?family=Poppins');
+      
+      html *
+        {
+        font-family: "Poppins", sans-serif !important;
+      }
+    </style>
+{% endblock header %} 
+{% block content %} 
+<h1>Playlists</h1>
+<h3>
+    <a href="/main/playlists-create">Create Playlist</a>
+    <form action="/main/playlists-genre" method="post">
+        {% csrf_token %}
+        <label for="genre">By Genre</label>
+        <input type="type" name = "genre" required>
+    </form>
+    <form action="/main/playlists-length" method="post">
+        {% csrf_token %}
+        <label for="genre">By Length (max mins)</label>
+        <input type="type" name = "length" required>
+    </form>
+</h3>
+<br></br>
+{% for playlist in playlists %}
+<h5>
+    <form action="/main/playlists-view" method="post">
+        {% csrf_token %}
+        <a>
+            {{ forloop.counter }} . {{playlist.1}} - {{playlist.2}} Songs <button type="submit"> Open </button>
+        </a>
+        <input type="hidden" name = "B{{ forloop.counter0 }}B" value = '{{playlist.0}}'>
+        <input type="hidden" name = "B{{ forloop.counter0 }}B1" value = '{{playlist.1}}'>
+    </form>
+    
+</h5>
+{% endfor %}
+
+{% endblock content %}

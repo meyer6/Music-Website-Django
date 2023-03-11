@@ -1,0 +1,33 @@
+{% extends "base2.html" %}
+{% block content %} 
+<form action="" method="post">
+    {% csrf_token %}
+    <h2>
+        <label for="email">Email:</label>
+        <input type="text" name="email" required value = '{{ email }}' readonly>
+    </h2>
+    <h2>
+        <label for="password">Password:</label>
+        <input type="text" name="password" required value = '{{ password }}'>
+    </h2>
+    <h2>
+        <label for="date">Date Of Birth:</label>
+        <input type="date" id="date" name="date" required value = '{{ date }}'>
+    </h2>
+    <h2>
+        <label for="fav_artist">Who is your favourite artist?</label>
+        <input type="text" name="fav_artist" required value = '{{ fav_artist }}'>
+    </h2>
+    <h2>
+        <label for="fav_genre">What is your favourite genre?</label>
+        <input type="text" name="fav_genre" required value = '{{ fav_genre }}'>
+    </h2>
+    <small>{{issue}}</small>
+    <h2>
+        <button type="submit"> Change details </button>
+    </h2>
+    <h2>
+        <a href="/account">Log out</a>
+    </h2>
+</form>
+{% endblock content %}

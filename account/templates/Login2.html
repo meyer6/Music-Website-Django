@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h2>
+        <label for="email"><b>Email:</b></label>
+        <input type="email" name="email" required>
+    </h2>
+    <h2>
+        <label for="password"><b>Password:</b></label>
+        <input type="password" name="password" required>
+    </h2>
+    <h2>
+        <button type="submit"> Login </button>
+    </h2>
+    <h2>
+        <a href="/account">Create Account</a>
+    </h2>
+</form>   
+{% endblock content %}

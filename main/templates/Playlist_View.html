@@ -1,0 +1,131 @@
+{% extends "base2.html" %}
+{% block header %} 
+    {% load static %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{%  static 'Main.css' %}"> 
+    <style>      
+      @import url('https://fonts.googleapis.com/css?family=Poppins');
+      
+      html *
+        {
+        font-family: "Poppins", sans-serif !important;
+      }
+      body {
+        background: rgb(82,200,251);
+        background: linear-gradient(118deg, rgba(82,200,251,1) 0%, rgba(28,147,254,1) 50%, rgba(2,94,176,1) 100%);
+      }
+    </style>
+<style></style>
+    
+{% endblock header%} 
+{% block content %} 
+<br/>
+<h1 align = "center">{{ name }} </h1>
+<br/>
+<table style="float: left" align = "center">
+    <tr>
+    <th width="40"></th>
+    </tr>
+</table>
+<table style="float: left" align = "center">
+    {% for song in songs1 %}
+        <tr>
+            <th>
+                <form action="/main/play-songs" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name = "{{ song.0 }}" value = "1">
+                    <button type = "submit"   style = "box-shadow: 0 2px 10px 0 #808080, 0 2px 20px 0 #808080;background-color: #D4FAFA; border-radius: 20px;width: 275px;border-width: 1.5px;" >
+                        <div style = "margin-top: 10px;">
+                            <img  width="250px" src = {{ song.3 }} style = "border-radius: 13px;">
+                            <p><b>{{ song.0 }}</b></p>
+                            <p>By {{ song.1 }} - {{ song.4 }}</p>
+                            <p></p>
+                        </div>
+                    </button>
+                </form>         
+            </th>
+        </tr>
+        <tr height = "10"><th></th></tr>
+    {% endfor %}
+</table>
+<table style="float: left" align = "center">
+    <tr>
+    <th width="8"></th>
+    </tr>
+</table>
+<table style="float: left" align = "center">
+    {% for song in songs2 %}
+        <tr>
+            <th>
+                <form action="/main/play-songs" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name = "{{ song.0 }}" value = "1">
+                    <button type = "submit"   style = "box-shadow: 0 2px 10px 0 #808080, 0 2px 20px 0 #808080;background-color: #D4FAFA; border-radius: 20px;width: 275px;border-width: 1.5px;" >
+                        <div style = "margin-top: 10px;">
+                            <img  width="250px" src = {{ song.3 }} style = "border-radius: 13px;">
+                            <p><b>{{ song.0 }}</b></p>
+                            <p>By {{ song.1 }} - {{ song.4 }}</p>
+                            <p></p>
+                        </div>
+                    </button>
+                </form>         
+            </th>
+        </tr>
+        <tr height = "10"><th></th></tr>
+    {% endfor %}
+</table>
+<table style="float: left" align = "center">
+    <tr>
+    <th width="8"></th>
+    </tr>
+</table>
+<table style="float: left" align = "center">
+    {% for song in songs3 %}
+        <tr>
+            <th>
+                <form action="/main/play-songs" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name = "{{ song.0 }}" value = "1">
+                    <button type = "submit"   style = "box-shadow: 0 2px 10px 0 #808080, 0 2px 20px 0 #808080;background-color: #D4FAFA; border-radius: 20px;width: 275px;border-width: 1.5px;" >
+                        <div style = "margin-top: 10px;">
+                            <img  width="250px" src = {{ song.3 }} style = "border-radius: 13px;">
+                            <p><b>{{ song.0 }}</b></p>
+                            <p>By {{ song.1 }} - {{ song.4 }}</p>
+                            <p></p>
+                        </div>
+                    </button>
+                </form>         
+            </th>
+        </tr>
+        <tr height = "10"><th></th></tr>
+    {% endfor %}
+</table>
+<table style="float: left" align = "center">
+    <tr>
+    <th width="8"></th>
+    </tr>
+</table>
+<table style="float: left" align = "center">
+    {% for song in songs4 %}
+        <tr>
+            <th>
+                <form action="/main/play-songs" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name = "{{ song.0 }}" value = "1">
+                    <button type = "submit"   style = "box-shadow: 0 2px 10px 0 #808080, 0 2px 20px 0 #808080;background-color: #D4FAFA; border-radius: 20px;width: 275px;border-width: 1.5px;" >
+                        <div style = "margin-top: 10px;">
+                            <img  width="250px" src = {{ song.3 }} style = "border-radius: 13px;">
+                            <p><b>{{ song.0 }}</b></p>
+                            <p>By {{ song.1 }} - {{ song.4 }}</p>
+                            <p></p>
+                        </div>
+                    </button>
+                </form>         
+            </th>
+        </tr>
+        <tr height = "10"><th></th></tr>
+    {% endfor %}
+</table>
+{% endblock content %}

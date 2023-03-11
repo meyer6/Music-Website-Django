@@ -1,0 +1,129 @@
+{% extends "base2.html" %}
+{% block header%}
+<style>
+    audio::-webkit-media-controls-play-button,
+     audio::-webkit-media-controls-panel {
+     background-color: #D4FAFA;
+     color: #D4FAFA;
+     }
+     .arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+body {
+        background: rgb(82,200,251);
+        background: linear-gradient(118deg, rgba(82,200,251,1) 0%, rgba(28,147,254,1) 50%, rgba(2,94,176,1) 100%);
+}
+</style>
+{% endblock header %}
+{% block content %} 
+{% load static %}
+<div align="center" style = "position:relative;top:7px;box-shadow: 2px 2px 2px 2px #91DDF2;background-color: #D4FAFA; border-radius: 20px;width: 310px;border:2px solid black; margin:0 auto;" >
+    <div style = "position:relative;top:5px;">
+        <p align = "center">
+            <img  style ="border-radius: 20px;" width="270px" src = {{image}} align = "center">
+        </p>
+        
+        <p align = "center"><b>{{name}}</b></p>
+        <p align = "center">By {{artist}}</p>
+        <p align = "center" width = "200px">
+            <audio controls style = "width: 270px;background-color: #D4FAFA">
+                <source src= {{song}} type="audio/ogg">
+                <source src= {{song}} type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </p>
+        <div style  = "display: flex;align-items: flex-start;position: relative;top: -18px;">
+            <table align = "center" >
+                <tr>
+                    <th>
+                        <form action="/main/play-songs" method="post" align = "center">
+                            {% csrf_token %}
+                            <input type="hidden" name = "previous" value = "1">
+                            <button width = "20px" type = "submit">
+                                <i class="arrow left"></i>
+                            </button>
+                        </form>
+                    </th>
+                    <th>
+                        <form action="/main/play-songs" method="post" align = "center">
+                            {% csrf_token %}
+                            <input type="hidden" name = "next" value = "1">
+                            <button width = "20px" type = "submit"><i class="arrow right"></i></button>
+                        </form> 
+                    </th>
+                </tr> 
+            
+            </table>
+        </div>
+    </div>
+</div>    
+<br></br>
+<!-- <table border ="1" align = "center">
+    <tr>
+        <th colspan = "2">
+            <img  width="250" src = {{image}}>
+        </th>
+    </tr>
+    <tr>
+        <th align = "left">
+            {{name}}
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <th align = "left">
+            By {{artist}}
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <th colspan = "2">
+            <audio controls>
+                <source src= {{song}} type="audio/ogg">
+                <source src= {{song}} type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </th>
+    </tr>
+    <tr>
+        <th align = "center">
+            <form action="/main/play-songs" method="post">
+                {% csrf_token %}
+                <input type="hidden" name = "previous" value = "1">
+                <button type = "submit">previous</button>
+            </form>
+        </th>
+        <th align = "center">
+            <form action="/main/play-songs" method="post">
+                {% csrf_token %}
+                <input type="hidden" name = "next" value = "1">
+                <button type = "submit">next</button>
+            </form>        
+        </th>
+    </tr>
+</table> -->
+{% endblock content %}
