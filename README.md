@@ -1,5 +1,5 @@
 # Music-Website-Django
-A music website made wih Django
+A music streaming service made wih Django
 ![image](https://github.com/meyer6/Music-Website-Django/assets/69467554/edfec572-5efd-440c-a9dc-508e451d5539)
 ![image](https://github.com/meyer6/Music-Website-Django/assets/69467554/dbf3f210-1a4f-4952-83eb-314b0ba4526d)
 ![image](https://github.com/meyer6/Music-Website-Django/assets/69467554/716ff215-4b9a-465a-baae-8fcec2894523)
